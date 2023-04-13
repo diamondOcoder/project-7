@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Diamond's Work</title>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weatherApp">
+        <form id="search-form">
+          <div class="row">
+            <div class="form-group col-9 searchBar">
+              <input
+                type="search"
+                placeholder="Enter a City..."
+                class="form-control"
+                id="cityInput"
+                autocomplete="off"
+                ;
+                aria-describedby="searchBarHelp" />
+            </div>
+            <div class="col-3">
+              <button type="submit" class="btn btn-secondary w-100">
+                Search
+              </button>
+            </div>
+            
+          </div>
+        </form>
+        <div class="weatherInfo">
+          <h1 id="city">Abuja</h1>
+
+          <ul>
+            <li id="date">Monday 10:20am</li>
+            <li id="weatherDescription">Clear sky</li>
+          </ul>
+
+          <div class="row">
+            <div class="col-8">
+              <div class="weather-temperature">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAACICAMAAAALZFNgAAAAyVBMVEX///+Azfb5rgD92Dv3/P75qgD5rAB6y/b91zP91y/91in+6JT/8sf94375pgD8rQCL0ff//fb+77r/+eZ5zv791Rn+7rP/++3+6qD+7a794G790wD93Vj9203/qwDb8Py+5Pqx3/mk2vj+88793mT/9tj7zYDQ6/uPyd+Z1vjm9P3936780Ir6vVb6siD6ukr83KH6tTX97NH7yHT94rj7wWL95sT81JbctmewwrOlxcWrw7zGv5foskzRun3GvIucx9TjtVm8v6GWaCD+AAAFq0lEQVR4nO2aa3eiOhSGRQS5VBExoq1atRdrpzpqp516Zuxl/v+PmgTkiEBCEkjaNcv3U1cL9GHfsrNDpXLSSf+02o2e+9kMSDYwrcFnQyCZqqqaV59NAWUhkLPPpqicQNKSDdK9tn1WEOw9BdQDhnXNCGJj7ykgAP+d1WcC8YCIxDYMRJJVQbEg5+gW46ZkkH7w/2wGkDP0B+O8ZI5KZRCYJOP9cCBD3A0FFb5gRuyp2Q7oYU1YVIHLrfSr94EJ0g5w0RKkAhHLso+SwDDSf7jqtdO/bJjYNCssO3h2j+raG3StMRDTp/hDZG2VqlaeIxAgqvC3kXMATYVyEbHZEMRRca/Re3o0l6IrAdWVXPKMi4uMwMzQjXoBxERqhCLgypP+bbmu7282G8/3xdSuLtXmzf/2sFhqzUDV77erDdWTbQZk1ONZffIN3mrd1DRdr4bSdV1rVh9yWM6GlmENqUnCWm4NCDXUe1xqEcNBuqYvngk3NUy0ggPqHsUPehrVAA1MMXBvtQyMkKW5wFmlZwStgXpB3yx1QUCiGlbmdmCla9kUe5TbjJvctmEFz1QByxJ0NgzhVWvYTT3ysYmxRiRtnTLKzfUew1QZZxh9a4+SXDK8NckcUaz8SHBEJgYN5h2Xb5thpBx3NxtccCRIHo4eZof2AOdcvTQ0p4H65TjIRqfhgGqu4o8KOmlLpVu5M9QeAusi3mZRcyRIfFiXrEIDrq4dN6ZbpeaAIRuPE7fXK3M7/pQfpwfpeumTgEirJgMHNMlCEAdDgIQ6DtjytGBxDJK+FOKcZzbHIGm3IkCeGB2D1BTQLm1YHROY5Gf5II88IPq6dJP4aw7PQN/QtI9MeuYxCPTNY9kgt3wg+rpskCWXZ6rVZdm+YS8ioZItUlF53CAlJ/APbhDOaG03Doo3Miu+WIXRyrcE94BxUPyk7ic3CF/ahOO6SLGdED/IMnpELRAfyGGjVxCkNptMWwpUazqe0cC0rZjiW7IirqnN5nUoJRD6aU7BcmUf1C4jWLXFrBVBRKrXW2NaHyXFm76jl7sExZ6ldckHwlfQHGfbyeRAKBM+o/CAOOv/OhgMRDLnIuFoR5z1HYEDuYeHhCNt9OzwKEjyzGwR5xfRHqF32EFcGt84oYKfR79zOSDJmJ3kIcc3zmi5e3l9e3t92S0hi7PLx0Ak7FnsEUGc0W57p3SQ6srddueMSAlTzDmk/cTo471zqBj1Tuf9jYoDXjtjNwm2lDjrX+kqTsfBZRLcdCSvXuSQ3DOD+Nmd/OhDoX39TJAJu0m+ZTnH2bWKcCgKT6XPilenIIei0PjGsxtHk+f0sBeurwU5KPLG7amWeTR59pL11fkoag+K6no2sFKT500iYEfvxUGmZIybAQjH50eT54qPvOOMAjm681EUI6+SePtJvGokP9TwnpbfX97+bLfb36+75Z/CBoFpQ+Do/3+4kjrGuh+/1zuR7lpiLWKD6LQmMcavjVv1ePUuwR6kGNl/n2EayfOry8I1IwsEX1rd4EwPnCdO9GpTARjk9O0CKyM4qFdURhBSZb062uaFbhFCAcXYQc/EmCO/niXtIYoDocxn1D1JrYR6QSCpK1PKJnou0CB7ljmNVYQFyBHKOB9EPEaAkhu2YwkGCUhyOvraXA5Hrk1Epm6ShBgnYpYYDAkpd4TWkCQIYXNxL5GDOB6QUURian0VELxJZFWRCGSMA5nIBcH7RjZI/cuA4BJYcozga5rkrMGnjcSlhgxSk8tBKCTC+8QECHa1kV3RcBxwiyeVA7/YSG1IiL2RXJOQWiOJJiE30BJ7o5xzE2nVNfeMQNbKl39EIKeqUUyhBc2tEhw0JxU18d6hPTEZCxqisXLALBYZKHWmA0/0JYgYDIXxm4XaZeyjlLIgoCbsJ3uHz3RKUms64fyWpBJ9uFSSuClOOumkL6i/g4OD85OdAmAAAAAASUVORK5CYII=" alt="" id="icon" />
+                <div>
+                  <strong><span class="temp">32</span></strong>
+                  <span class="units" id="celsius-link"> ºC </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 details">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>75%</li>
+                <li>Wind speed: <span id="wind"></span>5km/h</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <strong>
+        <a href="https://github.com/diamondOcoder" target="_blank"
+          ></a
+        > by Diamond Oruruo
+      </strong>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="src/app.js"></script>
+</html>
