@@ -1,10 +1,7 @@
 ul {
     list-style-type: none;
-    margin-left: 0;
-    padding: 0;
   }
   li {
-    margin-bottom: 0;
     color: #5c636a;
     line-height: 1.5;
   }
@@ -24,4 +21,58 @@ ul {
     border: 1px solid black;
     margin: 0 auto;
     border-radius: 15px;
+  }
+  .github{
+    text-align: center;
+  }
+   
+  #weatherDescription {
+    text-transform: capitalize;
+  }
+  
+  #city {
+    font-size: 30px;
+    color: #202124;
+  }
+  .weather-temperature .units {
+    position: relative;
+    font-size: 14px;
+    top: -32px;
+  }
+  .weather-temperature img {
+    margin-right: 5px;
+    height: 74px;
+    width: 74px;
+    float: left;
+  }
+  .weather-temperature strong {
+    color: #202124;
+    font-weight: 500px;
+    font-size: 70px;
+  }
+  
+  .humidity .wind {
+    margin: 0px;
+  }
+  .details {
+    padding-top: 14px;
+    padding-left: 10px;
+  }
+
+ 
+  .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+ 
+  a:link {
+    color: #99546c;
+    opacity: 0.8;
+    text-decoration: none;
+  }
+  a:visited {
+    color: #bec5cc;
+    text-decoration: none;
   }
